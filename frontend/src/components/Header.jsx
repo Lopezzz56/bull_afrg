@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
 
-export default function Header() {
+export default function Header({ isBackendActive }) {
   return (
     <header
       className="flex items-center justify-between px-6 py-3 bg-white border-b border-[#D8CFBC]"
@@ -24,8 +24,8 @@ export default function Header() {
 
       {/* Status badge */}
       <div className="flex items-center gap-1.5 text-[10px] font-medium text-[#565449]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#00A896] animate-pulse" />
-        Gemini · Playwright
+        <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isBackendActive ? 'bg-[#00A896]' : 'bg-red-500'}`} />
+        {isBackendActive ? 'Backend Active' : 'Backend Inactive'}
       </div>
     </header>
   );

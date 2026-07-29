@@ -3,8 +3,9 @@ import Header from './components/Header';
 import FileDropzone from './components/FileDropzone';
 import EditablePreviewModal from './components/EditablePreviewModal';
 import { extractFinancialData, getMockPdfFile } from './services/api';
-import { AlertCircle, Server } from 'lucide-react';
+import { AlertCircle, Server, X, FileText } from 'lucide-react';
 import { saveStateToDB, loadStateFromDB, clearStateInDB } from './services/db';
+import PdfHighlightOverlay from './components/PdfHighlightOverlay';
 import './App.css';
 
 export default function App() {
@@ -16,6 +17,8 @@ export default function App() {
   const [isNetworkError, setIsNetworkError] = useState(false);
   const [extractLog, setExtractLog]     = useState('');   // status messages during extraction
   const [isLoadingState, setIsLoadingState] = useState(true);
+  const [previewingPdfUrl, setPreviewingPdfUrl] = useState(null);
+  const [previewingPdfTitle, setPreviewingPdfTitle] = useState('');
 
   // Load state from IndexedDB on mount
   useEffect(() => {
@@ -41,6 +44,29 @@ export default function App() {
     }
   }, [screen, extractedData, pdfFile, isLoadingState]);
 
+  const [isBackendActive, setIsBackendActive] = useState(false);
+
+  // Poll backend health status
+  useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        const apiBase = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        const res = await fetch(`${apiBase}/health`);
+        if (res.ok) {
+          setIsBackendActive(true);
+        } else {
+          setIsBackendActive(false);
+        }
+      } catch (err) {
+        setIsBackendActive(false);
+      }
+    };
+
+    checkBackend();
+    const interval = setInterval(checkBackend, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   // ── Core extraction pipeline ───────────────────────────────────────────────
   const processFile = async (file) => {
@@ -51,7 +77,7 @@ export default function App() {
     setExtractLog('Uploading PDF to backend…');
 
     try {
-      setExtractLog('Calling Gemini 2.0 Flash for extraction…');
+      setExtractLog('Extracting financial data…');
       const result = await extractFinancialData(file);
 
       // Merge server-side + client-side validation flags
@@ -120,7 +146,7 @@ export default function App() {
   // ── UPLOAD SCREEN ─────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-[#FFFBF4] flex flex-col">
-      <Header />
+      <Header isBackendActive={isBackendActive} />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
 
@@ -134,7 +160,7 @@ export default function App() {
             Financial Report<br />Compiler
           </h2>
           <p className="text-[13px] text-[#565449] leading-relaxed max-w-sm mx-auto">
-            Upload a brokerage research PDF. Gemini 2.0 Flash extracts every metric with
+            Upload a brokerage research PDF. The extraction engine extracts every metric with
             page-exact coordinate citations, validates all YoY/QoQ math, generates charts,
             and compiles a pixel-perfect Geojit A4 layout.
           </p>
@@ -162,6 +188,51 @@ export default function App() {
           </button>
         )}
 
+        {/* Example PDFs section */}
+        {!isExtracting && (
+          <div className="mt-12 w-full max-w-lg border border-[#D8CFBC] rounded-lg bg-white p-5 text-center shadow-sm">
+            <h4 className="text-[10px] font-bold text-[#11120D] uppercase tracking-wider mb-3">
+              Example Achieved PDF Results
+            </h4>
+            <div className="flex flex-col gap-2 max-w-sm mx-auto">
+              <button
+                onClick={() => {
+                  setPreviewingPdfUrl('/FinReport_ICICI_Bank_Limited.pdf');
+                  setPreviewingPdfTitle('ICICI Bank Limited');
+                }}
+                className="text-[11px] font-semibold text-[#565449] hover:text-[#11120D] flex items-center justify-between border border-[#D8CFBC] rounded px-3 py-1.5 bg-[#FFFBF4]/50 hover:bg-[#FFFBF4] transition-all"
+              >
+                <span>ICICI Bank Limited</span>
+                <span className="text-[9px] text-[#8C8A7D]">View PDF →</span>
+              </button>
+              <button
+                onClick={() => {
+                  setPreviewingPdfUrl('/FinReport_L&T_Technology_Services_Limited.pdf');
+                  setPreviewingPdfTitle('L&T Technology Services Limited');
+                }}
+                className="text-[11px] font-semibold text-[#565449] hover:text-[#11120D] flex items-center justify-between border border-[#D8CFBC] rounded px-3 py-1.5 bg-[#FFFBF4]/50 hover:bg-[#FFFBF4] transition-all"
+              >
+                <span>L&T Technology Services Limited</span>
+                <span className="text-[9px] text-[#8C8A7D]">View PDF →</span>
+              </button>
+              <button
+                onClick={() => {
+                  setPreviewingPdfUrl('/FinReport_Pondy_Oxides_and_Chemicals_Limited.pdf');
+                  setPreviewingPdfTitle('Pondy Oxides & Chemicals Limited');
+                }}
+                className="text-[11px] font-semibold text-[#565449] hover:text-[#11120D] flex items-center justify-between border border-[#D8CFBC] rounded px-3 py-1.5 bg-[#FFFBF4]/50 hover:bg-[#FFFBF4] transition-all"
+              >
+                <span>Pondy Oxides and Chemicals Limited</span>
+                <span className="text-[9px] text-[#8C8A7D]">View PDF →</span>
+              </button>
+            </div>
+            
+            <p className="text-[10px] text-[#8C8A7D] mt-4 leading-relaxed">
+              AI can make mistakes sometimes and can give inaccurate results. Always verify outputs.
+            </p>
+          </div>
+        )}
+
         {/* Error banner */}
         {error && (
           <div className="mt-6 w-full max-w-lg border border-[#D8CFBC] rounded-lg bg-white overflow-hidden">
@@ -181,7 +252,7 @@ export default function App() {
                   <p className="label-xs mb-2">Start the backend server:</p>
                   <code className="block text-[11px] font-mono text-[#11120D] leading-5">
                     # In your project root:<br />
-                    .{'\\'}{'\\'}.venv\Scripts\Activate.ps1<br />
+                    .{"\\"}{"\\"}.venv\Scripts\Activate.ps1<br />
                     uvicorn backend.main:app --reload --port 8000
                   </code>
                 </div>
@@ -193,9 +264,43 @@ export default function App() {
 
       <footer className="border-t border-[#D8CFBC] py-3 text-center">
         <p className="text-[10px] text-[#D8CFBC] tracking-wide">
-          FinReport AI · Gemini 2.0 Flash · Playwright Chromium
+          FinReport AI · Financial Compiler Platform
         </p>
       </footer>
+
+      {previewingPdfUrl && (
+        <div className="fixed inset-0 bg-[#11120D]/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#FFFBF4] border border-[#D8CFBC] rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col overflow-hidden">
+            {/* Modal Header */}
+            <div className="px-5 py-3 border-b border-[#D8CFBC] flex items-center justify-between bg-white">
+              <div className="flex items-center gap-2">
+                <FileText className="w-4 h-4 text-[#565449]" />
+                <h3 className="font-bold text-[#11120D] text-[11px] uppercase tracking-wider">
+                  {previewingPdfTitle} — Example Result
+                </h3>
+              </div>
+              <button
+                onClick={() => { setPreviewingPdfUrl(null); setPreviewingPdfTitle(''); }}
+                className="p-1 hover:bg-[#FFFBF4] rounded transition-colors text-[#565449] hover:text-[#11120D]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="bg-amber-50/60 border-b border-[#D8CFBC] px-5 py-2 text-[10.5px] text-[#565449] font-medium text-center">
+              Template improvement is under active iteration. We will soon add all intended fields.
+            </div>
+
+            {/* Modal Content / PDF Viewer */}
+            <div className="flex-1 overflow-hidden p-4 bg-[#FFFBF4] min-h-0">
+              <div className="w-full h-full bg-white rounded border border-[#D8CFBC] p-2 overflow-hidden">
+                <PdfHighlightOverlay pdfFile={previewingPdfUrl} highlight={null} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 # FinReport AI — Financial Report Extraction and Compiler
 
-<video src="PASTE_YOUR_GITHUB_VIDEO_URL_HERE" width="100%" controls autoplay loop muted>
+<video src="https://github.com/Lopezzz56/bull_afrg/raw/main/demo.mp4" width="100%" controls autoplay loop muted>
   Your browser does not support the video tag.
 </video>
 
@@ -18,6 +18,12 @@ FinReport AI is an end-to-end automated platform that converts raw brokerage res
 * Utilizes a concurrent two-pass extraction pipeline powered by Gemini 2.0 Flash with an automated fallback cascade via OpenRouter.
 * **Pass 1 (Overview & Narrative)**: Extracts header metadata (Company Name, Ticker, Target Price, Rating), investment highlights, key summary bullets, and analyst disclosure information.
 * **Pass 2 (Financial Statements)**: Extracts multi-period structured financial tables including Profit & Loss, Balance Sheet, Cash Flow Statement, Financial Ratios, and Quarterly Results.
+
+> **Why Two-Pass Extraction?**  
+> Large Language Models (especially open/lightweight MoE models like `Gemma-4-26B` or free tier endpoints) enforce strict completion token limits (typically capped at 2,048 output tokens). Attempting to extract 80+ distinct keys and multi-year financial statements in a single prompt call leads to response truncation and dropped tables. 
+> 
+> Splitting the schema into two concurrent requests halves output token load per request, eliminates attention dilution, and allows lightweight models to match the extraction precision of flagship models like `Gemini 2.5 Pro`.
+
 
 ### 3. Coordinate Citation Resolution
 * Integrated word-level coordinate parser (`pdfplumber`) that maps extracted numerical metrics back to their original page coordinates.
@@ -127,7 +133,7 @@ bull_afrg/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/bull_afrg.git
+git clone https://github.com/Lopezzz56/bull_afrg.git
 cd bull_afrg
 ```
 

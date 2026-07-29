@@ -273,6 +273,14 @@ return (
           </button>
         </div>
 
+        {/* AI Disclaimer */}
+        <div className="mb-3 bg-amber-50 border border-amber-200 rounded-md px-3 py-1.5 flex items-center gap-2 text-[10.5px] text-amber-800 leading-normal">
+          <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+          <span>
+            <strong>Notice:</strong> AI can make mistakes sometimes and can give inaccurate results. Always verify outputs.
+          </span>
+        </div>
+
         {/* Editor Content Area */}
         <div className="flex-1 min-h-0 bg-white border border-[#D8CFBC] rounded-lg p-5 overflow-y-auto shadow-sm">
           

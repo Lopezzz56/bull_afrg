@@ -47,6 +47,10 @@ app.add_middleware(
 class RenderRequest(BaseModel):
     data: dict
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.get("/api/mock-pdf")
 async def get_mock_pdf():
     if MOCK_PDF_PATH.exists():
