@@ -1,0 +1,154 @@
+{
+  "data": {
+    "header": {
+      "company_name": "Geojit Financial Services Ltd",
+      "sector": "Financial Services",
+      "report_date": "24 July 2026",
+      "target_change_arrow": "▲",
+      "rating_change_arrow": "▬",
+      "earnings_change_arrow": "▲",
+      "target_price": "145",
+      "cmp": "125",
+      "return_pct": "16%",
+      "stock_type": "Mid Cap",
+      "bloomberg_code": "GEOJIT:IN",
+      "sensex": "80,250",
+      "nse_code": "GEOJIT",
+      "bse_code": "532285",
+      "time_frame": "1 Year",
+      "rating": "BUY"
+    },
+    "company_data": [
+      {"label": "Mkt Cap (cr)", "value": "2,980"},
+      {"label": "Equity Capital (cr)", "value": "23.9"},
+      {"label": "Outstanding Shares (cr)", "value": "23.9"},
+      {"label": "Free Float (%)", "value": "40.2%"},
+      {"label": "52 Week H/L (Rs.)", "value": "138 / 65"},
+      {"label": "3m Avg Vol (cr)", "value": "0.15"},
+      {"label": "P/E (x)", "value": "18.5"},
+      {"label": "P/B (x)", "value": "2.4"},
+      {"label": "Dividend Yield (%)", "value": "2.1%"}
+    ],
+    "shareholding": {
+      "periods": ["Q4FY25", "Q1FY26", "Q2FY26"],
+      "rows": [
+        {"label": "Promoters", "values": ["59.8", "59.8", "59.8"]},
+        {"label": "FIIs", "values": ["2.4", "2.6", "2.8"]},
+        {"label": "DIIs", "values": ["3.1", "3.0", "3.1"]},
+        {"label": "Public", "values": ["34.7", "34.6", "34.3"]}
+      ]
+    },
+    "price_performance": [
+      {"label": "Geojit", "m3": "12.4", "m6": "38.5", "y1": "92.0"},
+      {"label": "Nifty 50", "m3": "3.5", "m6": "10.2", "y1": "22.4"},
+      {"label": "Relative Perf.", "m3": "8.9", "m6": "28.3", "y1": "69.6"}
+    ],
+    "ye_march_summary": {
+      "years": ["FY23", "FY24", "FY25", "FY26E"],
+      "rows": [
+        {"label": "Revenue (Rs. cr)", "values": ["425.4", "512.8", "620.5", "710.0"], "italic": false},
+        {"label": "EBITDA (Rs. cr)", "values": ["110.2", "138.5", "180.2", "215.0"], "italic": false},
+        {"label": "PAT (Rs. cr)", "values": ["72.5", "92.4", "125.0", "150.0"], "italic": false},
+        {"label": "EPS (Rs.)", "values": ["3.0", "3.9", "5.2", "6.3"], "italic": true}
+      ]
+    },
+    "narrative_headline": "Strong Revenue Growth and Digital Scaling Drive Positive Outlook",
+    "company_description": "Geojit Financial Services Ltd is a premier financial services company in India with a strong footprint in retail brokerage, wealth management, and distribution of financial products. The company has successfully transitioned a major share of its client base to digital channels, optimizing operational efficiencies.",
+    "narrative_bullets": [
+      "Retail broking revenues grew by 18% YoY, supported by high retail participation and active client additions.",
+      "The mutual fund distribution segment saw a 22% increase in average assets under management (AUM).",
+      "Operating profit margin improved by 140 bps due to digital scaling and lower customer acquisition costs."
+    ],
+    "outlook_valuation": "With robust market activity and successful digital scaling, we expect Geojit to sustain its earnings growth momentum. The stock trades at an attractive valuation of 18.5x FY26E EPS. We maintain our BUY rating with a target price of Rs. 145, representing a 16% upside from CMP.",
+    "quarterly_financials": {
+      "columns": ["Q2FY26", "Q1FY26", "Q2FY25", "YoY (%)", "QoQ (%)"],
+      "rows": [
+        {"label": "Revenue", "values": ["182.4", "175.2", "150.8", "21.0", "4.1"], "italic": false},
+        {"label": "EBITDA", "values": ["55.8", "52.4", "43.2", "29.2", "6.5"], "italic": false},
+        {"label": "EBITDA Margin (%)", "values": ["30.6", "29.9", "28.6", "7.0", "2.3"], "italic": true},
+        {"label": "PAT", "values": ["38.5", "35.2", "29.4", "31.0", "9.4"], "italic": false}
+      ]
+    },
+    "key_highlights": [
+      "Active client base crossed the 1.4 million milestone in Q2FY26.",
+      "Successfully launched its advanced trading platform, offering enhanced charting and execution speeds.",
+      "Strong balance sheet with zero debt and robust cash reserves of Rs. 320 cr."
+    ],
+    "change_in_estimates": {
+      "years": ["FY26E", "FY27E"],
+      "rows": [
+        {"label": "Revenue (cr)", "old": ["695", "780"], "new": ["710", "805"], "change": ["2.2%", "3.2%"]},
+        {"label": "EBITDA (cr)", "old": ["210", "242"], "new": ["215", "252"], "change": ["2.4%", "4.1%"]},
+        {"label": "PAT (cr)", "old": ["145", "168"], "new": ["150", "176"], "change": ["3.4%", "4.8%"]}
+      ]
+    },
+    "pnl": {
+      "years": ["FY23", "FY24", "FY25", "FY26E"],
+      "rows": [
+        {"label": "Brokerage Revenue", "values": ["310.2", "380.5", "450.8", "515.0"], "bold": false, "italic": false},
+        {"label": "Other Income", "values": ["115.2", "132.3", "169.7", "195.0"], "bold": false, "italic": false},
+        {"label": "Total Revenue", "values": ["425.4", "512.8", "620.5", "710.0"], "bold": true, "italic": false},
+        {"label": "Operating Expenses", "values": ["315.2", "374.3", "440.3", "495.0"], "bold": false, "italic": false},
+        {"label": "EBITDA", "values": ["110.2", "138.5", "180.2", "215.0"], "bold": true, "italic": false},
+        {"label": "PAT", "values": ["72.5", "92.4", "125.0", "150.0"], "bold": true, "italic": false}
+      ]
+    },
+    "balance_sheet": {
+      "years": ["FY23", "FY24", "FY25", "FY26E"],
+      "rows": [
+        {"label": "Share Capital", "values": ["23.9", "23.9", "23.9", "23.9"], "bold": false, "italic": false},
+        {"label": "Reserves & Surplus", "values": ["720.5", "810.2", "930.5", "1050.0"], "bold": false, "italic": false},
+        {"label": "Total Net Worth", "values": ["744.4", "834.1", "954.4", "1073.9"], "bold": true, "italic": false},
+        {"label": "Current Assets", "values": ["410.2", "490.5", "580.4", "650.0"], "bold": false, "italic": false},
+        {"label": "Total Assets", "values": ["850.5", "980.2", "1120.4", "1250.0"], "bold": true, "italic": false}
+      ]
+    },
+    "cashflow": {
+      "years": ["FY23", "FY24", "FY25", "FY26E"],
+      "rows": [
+        {"label": "Cash from Operations", "values": ["95.4", "120.2", "145.8", "168.0"], "bold": false, "italic": false},
+        {"label": "Cash from Investing", "values": ["-30.2", "-42.5", "-50.4", "-45.0"], "bold": false, "italic": false},
+        {"label": "Cash from Financing", "values": ["-45.2", "-52.8", "-60.5", "-65.0"], "bold": false, "italic": false},
+        {"label": "Net Cash Flow", "values": ["20.0", "24.9", "34.9", "58.0"], "bold": true, "italic": false}
+      ]
+    },
+    "ratios": {
+      "years": ["FY23", "FY24", "FY25", "FY26E"],
+      "rows": [
+        {"label": "Operating Ratios", "values": [], "section_head": true, "bold": true, "italic": false},
+        {"label": "EBITDA Margin (%)", "values": ["25.9", "27.0", "29.0", "30.3"], "section_head": false, "bold": false, "italic": false},
+        {"label": "Net Margin (%)", "values": ["17.0", "18.0", "20.1", "21.1"], "section_head": false, "bold": false, "italic": false},
+        {"label": "Return Ratios", "values": [], "section_head": true, "bold": true, "italic": false},
+        {"label": "ROE (%)", "values": ["9.7", "11.1", "13.1", "14.0"], "section_head": false, "bold": false, "italic": false},
+        {"label": "ROCE (%)", "values": ["12.5", "14.2", "16.4", "17.5"], "section_head": false, "bold": false, "italic": false}
+      ]
+    },
+    "recommendation_history": [
+      {"date": "10-Nov-23", "rating": "BUY", "target": "85"},
+      {"date": "15-May-24", "rating": "BUY", "target": "102"},
+      {"date": "24-Oct-24", "rating": "BUY", "target": "120"},
+      {"date": "18-Feb-25", "rating": "BUY", "target": "135"},
+      {"date": "24-Jul-26", "rating": "BUY", "target": "145"}
+    ],
+    "rating_criteria": [
+      {"rating": "BUY", "large_caps": "Upside > 10%", "midcaps": "Upside > 15%", "small_caps": "Upside > 20%"},
+      {"rating": "ACCUMULATE", "large_caps": "Upside 5% - 10%", "midcaps": "Upside 5% - 15%", "small_caps": "Upside 10% - 20%"},
+      {"rating": "HOLD", "large_caps": "Upside -5% to 5%", "midcaps": "Upside -5% to 5%", "small_caps": "Upside -10% to 10%"},
+      {"rating": "REDUCE/SELL", "large_caps": "Downside > 5%", "midcaps": "Downside > 5%", "small_caps": "Downside > 10%"}
+    ],
+    "disclosure": {
+      "analyst_name": "Antigravity Research Team",
+      "paragraphs": [
+        "GIL confirms that it has not received any compensation from the subject company in the past 12 months, and GIL does not act as a market maker for the subject company.",
+        "The analyst certifies that all views expressed in this report accurately reflect his/her personal views about the subject securities or issuers."
+      ],
+      "registered_office": "Geojit Financial Services Ltd., Registered Office: 11th Floor, Geojit Office, Kochi, Kerala, India.",
+      "cin": "L67120KL1994PLC008403",
+      "sebi_reg_no": "INH200000345",
+      "dp_id": "IN-DP-325-2015"
+    },
+    "charts": {}
+  },
+  "citation_snippets": {},
+  "citation_coords": {}
+}

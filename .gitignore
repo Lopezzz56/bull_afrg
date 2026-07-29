@@ -1,0 +1,33 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node & Frontend
+node_modules/
+dist/
+dist-ssr/
+
+# Logs & Temporary files
+*.log
+temp/
+backend/app/temp/
+temp*.html
+temp*.pdf
+raw_output.txt
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
